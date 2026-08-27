@@ -24,7 +24,8 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#in-practice">In Practice</a></li>
+                <li><a href="#projects">Side Projects</a></li>
                 <li><a href="#life">Life</a></li>
                 <li><a href="mailto:loveshow10122@gmail.com" class="nav-cta">Contact</a></li>
             </ul>
@@ -186,10 +187,38 @@
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- In Practice -->
+    <section id="in-practice" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">In Practice</h2>
+            <div class="practice-card">
+                <div class="practice-card-header">
+                    <div>
+                        <h3>AOI + AI 瑕疵檢測</h3>
+                        <div class="practice-meta">AU Optronics · 友達光電 · Taichung</div>
+                    </div>
+                    <div class="tag-list">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">YOLO</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+                <div class="practice-body">
+                    <p>Display panel 的瑕疵檢測，長期倚靠 AOI 機台——昂貴、穩定、深度嵌入產線。我們的任務不是換掉它，而是在不動硬體的前提下，讓它變得更聰明。</p>
+                    <p>技術面分兩塊：object detection 定位瑕疵區域，image classification 判斷類型與嚴重程度。工廠資料從來不像教科書那樣乾淨充裕——在 limited labeled samples 的條件下把準確度拉到可以信任的水準，是這個專案最核心的工程挑戰。</p>
+                    <p>但技術只是一半。每次迭代都要跨部門對齊——與製程工程師確認瑕疵的物理意義、與整合團隊對接資料流、與生產單位協調讓產線不停擺。在快速迭代的同時讓各方需求都有人接住，是比 modeling 本身更需要耐力的事。</p>
+                    <p>上線後，系統要同時處理大量即時檢測請求與高頻 DB 寫入，在真實生產壓力下保持穩定。把 concurrency 架構設計好、撐過那個壓力——某種程度上是整個專案最有成就感的部分。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Side Projects -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title">Side Projects</h2>
             <div class="card-grid">
 
                 <div class="card card-emerald">
@@ -206,30 +235,6 @@
                     <a href="https://github.com/highlight35/line-tea-bot" target="_blank" class="card-link">
                         <i class="fab fa-github"></i> View on GitHub
                     </a>
-                </div>
-
-                <div class="card card-blue">
-                    <div class="card-icon">🚗</div>
-                    <h3>Trajectory Prediction · Autonomous Vehicles</h3>
-                    <p>LSTM-CNN model for multi-agent vehicle trajectory prediction. Master's thesis research using PyTorch, trained on real driving datasets.</p>
-                    <div class="tag-list">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">LSTM</span>
-                        <span class="tag">CNN</span>
-                        <span class="tag">Deep Learning</span>
-                    </div>
-                </div>
-
-                <div class="card card-violet">
-                    <div class="card-icon">🏭</div>
-                    <h3>CV Inspection System</h3>
-                    <p>Production computer vision system for smart manufacturing quality inspection at AUO, processing real-time image streams on the factory floor.</p>
-                    <div class="tag-list">
-                        <span class="tag">YOLO</span>
-                        <span class="tag">OpenCV</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">Smart Manufacturing</span>
-                    </div>
                 </div>
 
             </div>

@@ -355,10 +355,11 @@ body {
 }
 
 /* Per-section accent colors */
-#experience .section-title::after { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
-#education  .section-title::after { background: linear-gradient(90deg, var(--violet), #a855f7); }
-#projects   .section-title::after { background: linear-gradient(90deg, var(--emerald), var(--cyan)); }
-#life       .section-title::after { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+#experience   .section-title::after { background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+#education    .section-title::after { background: linear-gradient(90deg, var(--violet), #a855f7); }
+#in-practice  .section-title::after { background: linear-gradient(90deg, var(--cyan), var(--blue)); }
+#projects     .section-title::after { background: linear-gradient(90deg, var(--emerald), var(--cyan)); }
+#life         .section-title::after { background: linear-gradient(90deg, #f59e0b, #ef4444); }
 
 .section-subtitle {
     color: var(--text-muted);
@@ -500,6 +501,53 @@ body {
 /* Inherit tag colors per section */
 #experience .tag { color: var(--blue); background: var(--blue-light); border: 1px solid #bfdbfe; }
 #education  .tag { color: var(--violet); background: var(--violet-light); border: 1px solid #ddd6fe; }
+
+/* ===========================
+   In Practice
+   =========================== */
+.practice-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--cyan);
+    border-radius: var(--radius);
+    padding: 36px 40px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .25s;
+}
+
+.practice-card:hover { box-shadow: var(--shadow-md); }
+
+.practice-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.practice-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+}
+
+.practice-meta {
+    font-size: .875rem;
+    color: var(--text-muted);
+}
+
+.practice-body p {
+    color: var(--text-muted);
+    font-size: .95rem;
+    line-height: 1.85;
+    margin-bottom: 16px;
+}
+
+.practice-body p:last-child { margin-bottom: 0; }
+
+#in-practice .tag { color: var(--cyan); background: var(--cyan-light); border: 1px solid #a5f3fc; }
 
 /* ===========================
    Cards (Projects)
@@ -719,6 +767,8 @@ footer .container {
     .section-title { font-size: 1.75rem; }
     .timeline-header { flex-direction: column; gap: 8px; }
     .card-grid { grid-template-columns: 1fr; }
+    .practice-card { padding: 24px 20px; }
+    .practice-card-header { flex-direction: column; }
 }
 
 @media (max-width: 480px) {
