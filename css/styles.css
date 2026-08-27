@@ -623,53 +623,6 @@ body {
 /* ===========================
    Interest Cards
    =========================== */
-.interest-featured {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    display: flex;
-    margin-bottom: 20px;
-    transition: box-shadow .25s;
-}
-
-.interest-featured:hover { box-shadow: var(--shadow-md); }
-
-.interest-featured-video {
-    flex-shrink: 0;
-    width: 200px;
-    background: #000;
-}
-
-.interest-featured-video video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.interest-featured-body {
-    padding: 36px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-}
-
-.interest-featured-body h3 {
-    font-size: 1.2rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-.interest-featured-body p {
-    color: var(--text-muted);
-    font-size: .95rem;
-    line-height: 1.8;
-    max-width: 480px;
-}
-
 .interest-card {
     background: var(--bg);
     border: 1px solid var(--border);
@@ -684,9 +637,13 @@ body {
     transform: translateY(-3px);
 }
 
-.interest-card-img-placeholder {
+.interest-card-media {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.interest-card-emoji {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -694,15 +651,17 @@ body {
     background: var(--bg-alt);
 }
 
-.interest-card img {
+.interest-card-media video,
+.interest-card-media img {
     width: 100%;
-    height: 180px;
+    height: 100%;
     object-fit: cover;
     display: block;
     transition: transform .4s ease;
 }
 
-.interest-card:hover img { transform: scale(1.05); }
+.interest-card:hover .interest-card-media video,
+.interest-card:hover .interest-card-media img { transform: scale(1.05); }
 
 .interest-card-body {
     padding: 22px 24px;
@@ -870,9 +829,6 @@ footer .container {
     .card-grid { grid-template-columns: 1fr; }
     .practice-card { padding: 24px 20px; }
     .practice-card-header { flex-direction: column; }
-    .interest-featured { flex-direction: column; }
-    .interest-featured-video { width: 100%; height: 320px; }
-    .interest-featured-body { padding: 24px 20px; }
 }
 
 @media (max-width: 480px) {
