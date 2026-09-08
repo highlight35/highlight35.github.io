@@ -12,15 +12,25 @@
     --blue: #3b82f6;
     --blue-dark: #2563eb;
     --blue-light: #eff6ff;
+    --blue-light-hover: #dbeafe;
+    --blue-border: #bfdbfe;
+    --blue-border-strong: #93c5fd;
     --violet: #7c3aed;
     --violet-light: #f5f3ff;
+    --violet-border: #ddd6fe;
     --emerald: #059669;
     --emerald-light: #ecfdf5;
+    --emerald-border: #a7f3d0;
     --cyan: #0891b2;
     --cyan-light: #ecfeff;
+    --cyan-border: #a5f3fc;
 
     --border: #e2e8f0;
     --border-strong: #cbd5e1;
+
+    --navbar-bg: rgba(255,255,255,0.80);
+    --navbar-bg-mobile: rgba(255,255,255,.97);
+    --btn-secondary-bg: rgba(255,255,255,.8);
 
     --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
     --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 4px rgba(0,0,0,.05);
@@ -30,6 +40,43 @@
     --radius: 14px;
     --radius-sm: 8px;
     --nav-h: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0f1117;
+        --bg-alt: #171a23;
+        --text: #edeff4;
+        --text-muted: #9ca6b8;
+        --text-light: #6b7688;
+
+        --blue: #5b93f5;
+        --blue-dark: #3b76e0;
+        --blue-light: rgba(91,147,245,.14);
+        --blue-light-hover: rgba(91,147,245,.22);
+        --blue-border: rgba(91,147,245,.35);
+        --blue-border-strong: rgba(91,147,245,.55);
+        --violet: #9b7bf0;
+        --violet-light: rgba(155,123,240,.14);
+        --violet-border: rgba(155,123,240,.35);
+        --emerald: #34c495;
+        --emerald-light: rgba(52,196,149,.14);
+        --emerald-border: rgba(52,196,149,.35);
+        --cyan: #38bfdb;
+        --cyan-light: rgba(56,191,219,.14);
+        --cyan-border: rgba(56,191,219,.35);
+
+        --border: #262b38;
+        --border-strong: #3a4152;
+
+        --navbar-bg: rgba(15,17,23,.75);
+        --navbar-bg-mobile: rgba(15,17,23,.97);
+        --btn-secondary-bg: rgba(255,255,255,.05);
+
+        --shadow-sm: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+        --shadow-md: 0 4px 12px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.25);
+        --shadow-lg: 0 16px 40px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.3);
+    }
 }
 
 *, *::before, *::after {
@@ -59,7 +106,7 @@ body {
     right: 0;
     height: var(--nav-h);
     z-index: 1000;
-    background: rgba(255,255,255,0.80);
+    background: var(--navbar-bg);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid transparent;
@@ -118,14 +165,14 @@ body {
 .nav-links .nav-cta {
     color: var(--blue);
     font-weight: 600;
-    border: 1.5px solid #bfdbfe;
+    border: 1.5px solid var(--blue-border);
     background: var(--blue-light);
 }
 
 .nav-links .nav-cta:hover {
-    background: #dbeafe;
+    background: var(--blue-light-hover);
     color: var(--blue-dark);
-    border-color: #93c5fd;
+    border-color: var(--blue-border-strong);
 }
 
 .nav-toggle {
@@ -213,7 +260,7 @@ body {
     font-weight: 600;
     color: var(--emerald);
     background: var(--emerald-light);
-    border: 1px solid #a7f3d0;
+    border: 1px solid var(--emerald-border);
     padding: 5px 14px;
     border-radius: 999px;
     margin-bottom: 20px;
@@ -240,7 +287,7 @@ body {
     line-height: 1.0;
     letter-spacing: -0.04em;
     margin-bottom: 14px;
-    background: linear-gradient(135deg, #0f0f0f 40%, var(--blue) 100%);
+    background: linear-gradient(135deg, var(--text) 40%, var(--blue) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -302,12 +349,12 @@ body {
 .btn-secondary {
     border: 1.5px solid var(--border-strong);
     color: var(--text);
-    background: rgba(255,255,255,.8);
+    background: var(--btn-secondary-bg);
     backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
-    border-color: #94a3b8;
+    border-color: var(--text-light);
     background: var(--bg-alt);
     transform: translateY(-2px);
     box-shadow: var(--shadow-sm);
@@ -499,8 +546,8 @@ body {
 }
 
 /* Inherit tag colors per section */
-#experience .tag { color: var(--blue); background: var(--blue-light); border: 1px solid #bfdbfe; }
-#education  .tag { color: var(--violet); background: var(--violet-light); border: 1px solid #ddd6fe; }
+#experience .tag { color: var(--blue); background: var(--blue-light); border: 1px solid var(--blue-border); }
+#education  .tag { color: var(--violet); background: var(--violet-light); border: 1px solid var(--violet-border); }
 
 /* ===========================
    In Practice
@@ -547,7 +594,7 @@ body {
 
 .practice-body p:last-child { margin-bottom: 0; }
 
-#in-practice .tag { color: var(--cyan); background: var(--cyan-light); border: 1px solid #a5f3fc; }
+#in-practice .tag { color: var(--cyan); background: var(--cyan-light); border: 1px solid var(--cyan-border); }
 
 /* ===========================
    Cards (Projects)
@@ -600,9 +647,9 @@ body {
     flex: 1;
 }
 
-.card-emerald .tag { color: var(--emerald); background: var(--emerald-light); border: 1px solid #a7f3d0; }
-.card-blue    .tag { color: var(--blue);    background: var(--blue-light);    border: 1px solid #bfdbfe; }
-.card-violet  .tag { color: var(--violet);  background: var(--violet-light);  border: 1px solid #ddd6fe; }
+.card-emerald .tag { color: var(--emerald); background: var(--emerald-light); border: 1px solid var(--emerald-border); }
+.card-blue    .tag { color: var(--blue);    background: var(--blue-light);    border: 1px solid var(--blue-border); }
+.card-violet  .tag { color: var(--violet);  background: var(--violet-light);  border: 1px solid var(--violet-border); }
 
 .card-link {
     display: inline-flex;
@@ -818,7 +865,7 @@ footer .container {
         top: var(--nav-h);
         left: 0;
         right: 0;
-        background: rgba(255,255,255,.97);
+        background: var(--navbar-bg-mobile);
         backdrop-filter: blur(16px);
         border-bottom: 1px solid var(--border);
         flex-direction: column;
