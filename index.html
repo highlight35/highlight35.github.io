@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lucy Kao — AI Engineer & Product Builder based in Melbourne">
+    <meta name="description" data-i18n-attr="content: meta.desc" content="Lucy Kao — AI Engineer & Product Builder based in Taiwan">
     <title>Lucy Kao</title>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/lucy-buddy.css">
@@ -24,11 +24,12 @@
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#in-practice">In Practice</a></li>
-                <li><a href="#projects">Side Projects</a></li>
-                <li><a href="#life">Interests</a></li>
+                <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+                <li><a href="#education" data-i18n="nav.education">Education</a></li>
+                <li><a href="#in-practice" data-i18n="nav.practice">In Practice</a></li>
+                <li><a href="#projects" data-i18n="nav.projects">Side Projects</a></li>
+                <li><a href="#life" data-i18n="nav.interests">Interests</a></li>
+                <li><button id="langToggle" class="lang-toggle" aria-label="切換語言 / Switch language">中</button></li>
             </ul>
         </div>
     </nav>
@@ -40,16 +41,16 @@
         <div class="hero-blob hero-blob-3"></div>
         <div class="hero-content">
             <div class="hero-text">
-                <span class="hero-badge">Available for opportunities</span>
+                <span class="hero-badge" data-i18n="hero.badge">Available for opportunities</span>
                 <h1>Lucy Kao</h1>
-                <p class="hero-title">AI Engineer · Product Builder</p>
-                <p class="hero-bio">Building end-to-end AI systems — from computer vision models in smart manufacturing to LLM-powered products. Based in Taiwan, open to AI engineering roles.</p>
+                <p class="hero-title" data-i18n="hero.title">AI Engineer · Product Builder</p>
+                <p class="hero-bio" data-i18n="hero.bio">Building end-to-end AI systems — from computer vision models in smart manufacturing to LLM-powered products. Based in Taiwan, open to AI engineering roles.</p>
                 <div class="hero-links">
                     <a href="mailto:loveshow10122@gmail.com" class="btn-primary">
-                        <i class="fas fa-envelope"></i> Get in touch
+                        <i class="fas fa-envelope"></i> <span data-i18n="hero.contact">Get in touch</span>
                     </a>
                     <a href="resume.html" class="btn-secondary">
-                        <i class="fas fa-file-lines"></i> Resume
+                        <i class="fas fa-file-lines"></i> <span data-i18n="hero.resume">Resume</span>
                     </a>
                     <a href="https://linkedin.com/in/明郡-高-48b385b6/" target="_blank" class="btn-secondary">
                         <i class="fab fa-linkedin"></i> LinkedIn
@@ -68,7 +69,7 @@
     <!-- Experience -->
     <section id="experience" class="section">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
+            <h2 class="section-title" data-i18n="sec.experience">Experience</h2>
             <div class="timeline">
 
                 <div class="timeline-item">
@@ -76,15 +77,15 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>Senior Computer Vision / Software Engineer</h3>
-                                <div class="company">AU Optronics (AUO · 友達光電) · Taichung, Taiwan</div>
+                                <h3 data-i18n="exp.1.role">Senior Computer Vision / Software Engineer</h3>
+                                <div class="company" data-i18n="exp.1.company">AU Optronics (AUO · 友達光電) · Taichung, Taiwan</div>
                             </div>
-                            <span class="timeline-date">Oct 2020 – May 2026</span>
+                            <span class="timeline-date" data-i18n="exp.1.date">Oct 2020 – May 2026</span>
                         </div>
                         <ul>
-                            <li><strong>Computer Vision & Model Deployment</strong> — Led end-to-end vision pipelines; trained and fine-tuned custom deep learning models (YOLO series) alongside OpenCV image preprocessing to achieve real-time defect detection and high-precision classification.</li>
-                            <li><strong>Backend & Data Architecture</strong> — Architected high-performance backend services using FastAPI; managed structured and unstructured production datasets across MySQL and MongoDB.</li>
-                            <li><strong>Requirement Scoping & Agile Delivery</strong> — Translated complex operational pain points into clear system specs. Collaborated cross-functionally to rapidly adapt inspection logic and resolve edge cases with high agility.</li>
+                            <li data-i18n-html="exp.1.b1"><strong>Computer Vision &amp; Model Deployment</strong> — Led end-to-end vision pipelines; trained and fine-tuned custom deep learning models (YOLO series) alongside OpenCV image preprocessing to achieve real-time defect detection and high-precision classification.</li>
+                            <li data-i18n-html="exp.1.b2"><strong>Backend &amp; Data Architecture</strong> — Architected high-performance backend services using FastAPI; managed structured and unstructured production datasets across MySQL and MongoDB.</li>
+                            <li data-i18n-html="exp.1.b3"><strong>Requirement Scoping &amp; Agile Delivery</strong> — Translated complex operational pain points into clear system specs. Collaborated cross-functionally to rapidly adapt inspection logic and resolve edge cases with high agility.</li>
                         </ul>
                         <div class="tag-list">
                             <span class="tag">Computer Vision</span>
@@ -103,14 +104,14 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>Software Engineer</h3>
-                                <div class="company">SIMIS (科展資訊) · Taichung, Taiwan</div>
+                                <h3 data-i18n="exp.2.role">Software Engineer</h3>
+                                <div class="company" data-i18n="exp.2.company">SIMIS (科展資訊) · Taichung, Taiwan</div>
                             </div>
-                            <span class="timeline-date">Aug 2016 – Sep 2017</span>
+                            <span class="timeline-date" data-i18n="exp.2.date">Aug 2016 – Sep 2017</span>
                         </div>
                         <ul>
-                            <li><strong>ERP Customization & Data Integration</strong> — Customized enterprise ERP modules, tailored quotation/order formats, and integrated data flows across inventory and accounting systems.</li>
-                            <li><strong>Requirement Scoping & UI Tuning</strong> — Translated cross-industry client workflows into technical specs, optimizing UI interactions and business logic for stable delivery.</li>
+                            <li data-i18n-html="exp.2.b1"><strong>ERP Customization &amp; Data Integration</strong> — Customized enterprise ERP modules, tailored quotation/order formats, and integrated data flows across inventory and accounting systems.</li>
+                            <li data-i18n-html="exp.2.b2"><strong>Requirement Scoping &amp; UI Tuning</strong> — Translated cross-industry client workflows into technical specs, optimizing UI interactions and business logic for stable delivery.</li>
                         </ul>
                         <div class="tag-list">
                             <span class="tag">ERP Systems</span>
@@ -126,14 +127,14 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>FinTech Research Intern</h3>
-                                <div class="company">Institute for Information Industry (資策會) · Taipei, Taiwan</div>
+                                <h3 data-i18n="exp.3.role">FinTech Research Intern</h3>
+                                <div class="company" data-i18n="exp.3.company">Institute for Information Industry (資策會) · Taipei, Taiwan</div>
                             </div>
-                            <span class="timeline-date">Feb 2016 – Jun 2016</span>
+                            <span class="timeline-date" data-i18n="exp.3.date">Feb 2016 – Jun 2016</span>
                         </div>
                         <ul>
-                            <li><strong>Market Research & Trend Analysis</strong> — Researched and benchmarked emerging FinTech startups, analyzing core business models, innovative technologies, and industry trends to identify key success drivers.</li>
-                            <li><strong>Publication & Case Studies</strong> — Co-authored and edited the industry casebook "FINTECH66" (金融科技創新精選個案), synthesizing in-depth case studies on innovative FinTech applications.</li>
+                            <li data-i18n-html="exp.3.b1"><strong>Market Research &amp; Trend Analysis</strong> — Researched and benchmarked emerging FinTech startups, analyzing core business models, innovative technologies, and industry trends to identify key success drivers.</li>
+                            <li data-i18n-html="exp.3.b2"><strong>Publication &amp; Case Studies</strong> — Co-authored and edited the industry casebook “FINTECH66” (金融科技創新精選個案), synthesizing in-depth case studies on innovative FinTech applications.</li>
                         </ul>
                         <div class="tag-list">
                             <span class="tag">FinTech</span>
@@ -150,7 +151,7 @@
     <!-- Education -->
     <section id="education" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title" data-i18n="sec.education">Education</h2>
             <div class="timeline">
 
                 <div class="timeline-item">
@@ -158,15 +159,15 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>M.B.A. in Information Management</h3>
-                                <div class="company">National Central University · Taoyuan, Taiwan</div>
+                                <h3 data-i18n="edu.1.degree">M.B.A. in Information Management</h3>
+                                <div class="company" data-i18n="edu.1.school">National Central University · Taoyuan, Taiwan</div>
                             </div>
-                            <span class="timeline-date">2018 – 2022</span>
+                            <span class="timeline-date" data-i18n="edu.1.date">2018 – 2022</span>
                         </div>
                         <ul>
-                            <li>Research: LSTM-CNN model for autonomous vehicle trajectory prediction (PyTorch)</li>
-                            <li>Research: CNN, Neuro-Fuzzy, PSO optimization algorithms</li>
-                            <li>Teaching Assistant for Online Creative Marketing</li>
+                            <li data-i18n="edu.1.b1">Research: LSTM-CNN model for autonomous vehicle trajectory prediction (PyTorch)</li>
+                            <li data-i18n="edu.1.b2">Research: CNN, Neuro-Fuzzy, PSO optimization algorithms</li>
+                            <li data-i18n="edu.1.b3">Teaching Assistant for Online Creative Marketing</li>
                         </ul>
                     </div>
                 </div>
@@ -176,13 +177,13 @@
                     <div class="timeline-content">
                         <div class="timeline-header">
                             <div>
-                                <h3>B.B.A. in Information Management</h3>
-                                <div class="company">Shih Hsin University · Taipei, Taiwan</div>
+                                <h3 data-i18n="edu.2.degree">B.B.A. in Information Management</h3>
+                                <div class="company" data-i18n="edu.2.school">Shih Hsin University · Taipei, Taiwan</div>
                             </div>
-                            <span class="timeline-date">2012 – 2016</span>
+                            <span class="timeline-date" data-i18n="edu.2.date">2012 – 2016</span>
                         </div>
                         <ul>
-                            <li>Developed Android mobile application in Java</li>
+                            <li data-i18n="edu.2.b1">Developed an Android mobile application in Java</li>
                         </ul>
                     </div>
                 </div>
@@ -194,12 +195,12 @@
     <!-- In Practice -->
     <section id="in-practice" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">In Practice</h2>
+            <h2 class="section-title" data-i18n="sec.practice">In Practice</h2>
             <div class="practice-card">
                 <div class="practice-card-header">
                     <div>
-                        <h3>AOI + AI 瑕疵檢測</h3>
-                        <div class="practice-meta">AU Optronics · 友達光電 · Taichung</div>
+                        <h3 data-i18n="practice.title">AOI + AI Defect Detection</h3>
+                        <div class="practice-meta" data-i18n="practice.meta">AU Optronics · 友達光電 · Taichung</div>
                     </div>
                     <div class="tag-list">
                         <span class="tag">Computer Vision</span>
@@ -210,10 +211,10 @@
                     </div>
                 </div>
                 <div class="practice-body">
-                    <p>Display panel 的瑕疵檢測，長期倚靠 AOI 機台——昂貴、穩定、深度嵌入產線。我們的任務不是換掉它，而是在不動硬體的前提下，讓它變得更聰明。</p>
-                    <p>技術面分兩塊：object detection 定位瑕疵區域，image classification 判斷類型與嚴重程度。工廠資料從來不像教科書那樣乾淨充裕——在 limited labeled samples 的條件下把準確度拉到可以信任的水準，是這個專案最核心的工程挑戰。</p>
-                    <p>但技術只是一半。每次迭代都要跨部門對齊——與製程工程師確認瑕疵的物理意義、與整合團隊對接資料流、與生產單位協調讓產線不停擺。在快速迭代的同時讓各方需求都有人接住，是比 modeling 本身更需要耐力的事。</p>
-                    <p>上線後，系統要同時處理大量即時檢測請求與高頻 DB 寫入，在真實生產壓力下保持穩定。把 concurrency 架構設計好、撐過那個壓力——某種程度上是整個專案最有成就感的部分。</p>
+                    <p data-i18n="practice.p1">Defect inspection for display panels has long relied on AOI machines — expensive, stable, and deeply embedded in the production line. Our goal wasn't to replace them, but to make them smarter without touching the hardware.</p>
+                    <p data-i18n="practice.p2">The technical work splits in two: object detection to locate defect regions, and image classification to judge type and severity. Factory data is never as clean or abundant as a textbook — pushing accuracy to a trustworthy level with limited labeled samples was the core engineering challenge.</p>
+                    <p data-i18n="practice.p3">But the tech is only half of it. Every iteration meant aligning across teams — confirming the physical meaning of defects with process engineers, wiring up data flow with the integration team, coordinating with production so the line never stops. Keeping every stakeholder's needs met while iterating fast took more stamina than the modeling itself.</p>
+                    <p data-i18n="practice.p4">Once live, the system had to handle a high volume of real-time inspection requests and frequent DB writes, staying stable under real production pressure. Designing the concurrency architecture to survive that load was, in a way, the most satisfying part of the whole project.</p>
                 </div>
             </div>
         </div>
@@ -222,20 +223,19 @@
     <!-- Side Projects -->
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title">Side Projects</h2>
+            <h2 class="section-title" data-i18n="sec.projects">Side Projects</h2>
             <div class="card-grid">
 
                 <div class="card card-emerald">
                     <div class="card-icon">🍵</div>
-                    <h3>沐春選茶 — LINE Bot + Threads 行銷</h3>
-                    <p>End-to-end AI system for a tea brand: LINE sales bot with natural language ordering, Notion CRM, Google Calendar sync, and automated daily Threads posts via GitHub Actions.</p>
-                    <p>為茶葉品牌打造的一套 AI 工具。LINE Bot 讓顧客用說話方式下單，訂單自動進 Notion、出貨同步行事曆；同一個專案也包含每日 Threads 自動發文，由 AI 生成內容、排程上線。</p>
+                    <h3 data-i18n="proj.1.title">Muchun Tea — LINE Bot + Threads Marketing</h3>
+                    <p data-i18n="proj.1.desc">An end-to-end AI toolkit for a tea brand. The LINE bot lets customers order in natural language; orders flow into Notion automatically, with shipping synced to Google Calendar. The same project also runs daily automated Threads posts — content generated by AI and scheduled via GitHub Actions.</p>
                     <div class="card-shots">
                         <a href="assets/img/projects/line-tea-bot-menu.png" target="_blank">
                             <img src="assets/img/projects/line-tea-bot-menu.png" alt="LINE Bot Rich Menu">
                         </a>
                         <a href="assets/img/projects/line-tea-bot-chart.png" target="_blank">
-                            <img src="assets/img/projects/line-tea-bot-chart.png" alt="購買喜好分析圖表">
+                            <img src="assets/img/projects/line-tea-bot-chart.png" alt="Purchase preference chart">
                         </a>
                     </div>
                     <div class="tag-list">
@@ -250,9 +250,8 @@
 
                 <div class="card card-blue">
                     <div class="card-icon">🧾</div>
-                    <h3>澳洲收據追蹤</h3>
-                    <p>Receipt OCR pipeline using Apple Vision (offline, free) to extract items, prices, and store info from photos, then log them into Notion.</p>
-                    <p>旅居澳洲期間想解決記帳麻煩，嘗試用 macOS 內建 OCR 拍照辨識收據，自動解析品項與金額存進 Notion。探索如何在資料雜亂、格式不統一的真實收據上做出可靠的資訊擷取。</p>
+                    <h3 data-i18n="proj.2.title">Australia Receipt Tracker</h3>
+                    <p data-i18n="proj.2.desc">Built while living in Australia to make expense tracking less tedious: photograph a receipt, use macOS's built-in OCR to parse items and prices, and log them into Notion. An exploration of reliable information extraction from messy, inconsistent real-world receipts.</p>
                     <div class="tag-list">
                         <span class="tag">Apple Vision</span>
                         <span class="tag">OCR</span>
@@ -268,38 +267,38 @@
     <!-- Interests -->
     <section id="life" class="section section-alt">
         <div class="container">
-            <h2 class="section-title">Interests</h2>
+            <h2 class="section-title" data-i18n="sec.interests">Interests</h2>
             <div class="card-grid">
 
                 <div class="interest-card">
                     <div class="interest-card-body">
                         <div class="card-icon">☕</div>
-                        <h3>Coffee &amp; Cooking</h3>
-                        <p>手沖咖啡跟下廚都是讓思緒慢下來的方式，也喜歡四處探咖啡廳，感受不同空間的氣氛。</p>
+                        <h3 data-i18n="interest.1.title">Coffee &amp; Cooking</h3>
+                        <p data-i18n="interest.1.desc">Pour-over coffee and cooking are both ways to slow my thoughts down. I like wandering between cafés too, taking in the mood of different spaces.</p>
                     </div>
                 </div>
 
                 <div class="interest-card">
                     <div class="interest-card-body">
                         <div class="card-icon">🏃</div>
-                        <h3>Workout &amp; Running</h3>
-                        <p>喜歡健身和運動帶來的成效感，還有那段只跟自己對話的時間。</p>
+                        <h3 data-i18n="interest.2.title">Workout &amp; Running</h3>
+                        <p data-i18n="interest.2.desc">I like the sense of progress that training brings — and that stretch of time spent only in conversation with myself.</p>
                     </div>
                 </div>
 
                 <div class="interest-card">
                     <div class="interest-card-body">
                         <div class="card-icon">📷</div>
-                        <h3>Travel &amp; Photography</h3>
-                        <p>喜歡出遊到處走走看看，用鏡頭記錄沿途的風景和日常片段。</p>
+                        <h3 data-i18n="interest.3.title">Travel &amp; Photography</h3>
+                        <p data-i18n="interest.3.desc">I love going places and just looking around, using the camera to keep the scenery and small everyday moments along the way.</p>
                     </div>
                 </div>
 
                 <div class="interest-card">
                     <div class="interest-card-body">
                         <div class="card-icon">🎵</div>
-                        <h3>Music &amp; Anime</h3>
-                        <p>音樂和動畫是卸下的出口，會認真沉浸、不隨便看完就算。</p>
+                        <h3 data-i18n="interest.4.title">Music &amp; Anime</h3>
+                        <p data-i18n="interest.4.desc">Music and anime are where I unwind — I sink into them properly, not just watch to the end for the sake of it.</p>
                     </div>
                 </div>
 
@@ -326,6 +325,7 @@
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/lucy-buddy.js"></script>
 </body>

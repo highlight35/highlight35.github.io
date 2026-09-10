@@ -1,19 +1,45 @@
-/* Lucy Buddy — 官網 Q 版導覽角色 + 聊天 */
+/* Lucy Buddy — 官網 Q 版導覽角色 + 聊天（支援中英切換） */
 (function () {
   const API = "https://161-118-248-184.nip.io/portfolio-chat";
   const DISMISS_KEY = "lucyBuddyDismissed";
 
   try { if (sessionStorage.getItem(DISMISS_KEY) === "1") return; } catch (e) {}
 
+  const FALLBACK = {
+    "buddy.l1": "Hi, I'm Lucy 👋 welcome to my portfolio!",
+    "buddy.l2": "Scroll down to see my experience and projects",
+    "buddy.l3": "Looking for my resume? Tap here",
+    "buddy.l4": "Pretty happy with these side projects — take a look",
+    "buddy.l5": "Want to ask me something directly? Tap me",
+    "buddy.cta": "Sure →",
+    "buddy.greet": "Hi! I'm Lucy's AI double — ask me anything about her 😊",
+    "buddy.title": "Lucy's AI double",
+    "buddy.sub": "Ask about Lucy's experience, projects, skills",
+    "buddy.s1q": "介紹一下 Lucy 的電腦視覺經驗", "buddy.s1": "Her computer vision experience?",
+    "buddy.s2q": "Lucy 做過哪些個人專案？", "buddy.s2": "Her side projects?",
+    "buddy.s3q": "Lucy 現在在找工作嗎？想找什麼職缺？", "buddy.s3": "Is she job hunting?",
+    "buddy.placeholder": "Type a question…",
+    "buddy.send": "Send",
+    "buddy.thinking": "thinking…",
+    "buddy.err": "Something went wrong just now, try again 🙏",
+    "buddy.offline": "Can't reach the server, ask me again in a bit 🙏",
+  };
+  function t(key) {
+    if (window.i18n && window.i18n.t) {
+      const v = window.i18n.t(key);
+      if (v && v !== key) return v;
+    }
+    return FALLBACK[key] || key;
+  }
+
   const AVATAR_IMG = `<img src="assets/img/lucy-avatar.png" alt="Lucy" draggable="false">`;
-  const MINI_SVG = AVATAR_IMG;
 
   const LINES = [
-    { t: "嗨，我是 Lucy 👋 歡迎來我的作品集！", cta: null },
-    { t: "往下滑可以看我的經歷跟專案～", cta: null },
-    { t: "想找我的履歷嗎？點這裡直接看", cta: () => location.href = "resume.html" },
-    { t: "這幾個 Side Project 我還蠻得意的，可以點進去看", cta: () => location.hash = "#projects" },
-    { t: "有問題想直接問我？點我聊聊", cta: openChat },
+    { k: "buddy.l1", cta: null },
+    { k: "buddy.l2", cta: null },
+    { k: "buddy.l3", cta: () => location.href = "resume.html" },
+    { k: "buddy.l4", cta: () => location.hash = "#projects" },
+    { k: "buddy.l5", cta: () => openChat() },
   ];
 
   // ---- build DOM ----
@@ -21,8 +47,8 @@
   root.id = "lucy-buddy";
   root.innerHTML = `
     <div class="lb-bubble" id="lbBubble"></div>
-    <button class="lb-avatar" id="lbAvatar" aria-label="跟 Lucy 聊聊">${AVATAR_IMG}</button>
-    <button class="lb-close" id="lbClose" aria-label="關閉">✕</button>`;
+    <button class="lb-avatar" id="lbAvatar" aria-label="Lucy"><img src="assets/img/lucy-avatar.png" alt="Lucy" draggable="false"></button>
+    <button class="lb-close" id="lbClose" aria-label="close">✕</button>`;
   document.body.appendChild(root);
 
   const chat = document.createElement("div");
@@ -30,22 +56,22 @@
   chat.id = "lbChat";
   chat.innerHTML = `
     <div class="lb-chat-head">
-      <span class="lb-mini">${MINI_SVG}</span>
+      <span class="lb-mini">${AVATAR_IMG}</span>
       <div>
-        <div class="lb-title">Lucy 的 AI 分身</div>
-        <div class="lb-sub">問我關於 Lucy 的經歷、專案、技能</div>
+        <div class="lb-title" id="lbHeadTitle"></div>
+        <div class="lb-sub" id="lbHeadSub"></div>
       </div>
-      <button class="lb-x" id="lbX" aria-label="關閉聊天">✕</button>
+      <button class="lb-x" id="lbX" aria-label="close">✕</button>
     </div>
     <div class="lb-log" id="lbLog"></div>
     <div class="lb-suggest" id="lbSuggest">
-      <button data-q="介紹一下 Lucy 的電腦視覺經驗">電腦視覺經驗？</button>
-      <button data-q="Lucy 做過哪些個人專案？">個人專案？</button>
-      <button data-q="Lucy 現在在找工作嗎？想找什麼職缺？">在找工作嗎？</button>
+      <button data-qk="buddy.s1q" data-lk="buddy.s1"></button>
+      <button data-qk="buddy.s2q" data-lk="buddy.s2"></button>
+      <button data-qk="buddy.s3q" data-lk="buddy.s3"></button>
     </div>
     <div class="lb-input-row">
-      <input id="lbInput" type="text" placeholder="打字問問看…" maxlength="500" autocomplete="off">
-      <button id="lbSend">送出</button>
+      <input id="lbInput" type="text" maxlength="500" autocomplete="off">
+      <button id="lbSend"></button>
     </div>`;
   document.body.appendChild(chat);
 
@@ -56,12 +82,24 @@
   const sendBtn = document.getElementById("lbSend");
   const suggest = document.getElementById("lbSuggest");
 
+  function applyStaticText() {
+    document.getElementById("lbHeadTitle").textContent = t("buddy.title");
+    document.getElementById("lbHeadSub").textContent = t("buddy.sub");
+    input.placeholder = t("buddy.placeholder");
+    sendBtn.textContent = t("buddy.send");
+    suggest.querySelectorAll("button").forEach(b => {
+      b.textContent = t(b.dataset.lk);
+      b.dataset.q = t(b.dataset.qk);
+    });
+  }
+
   // ---- bubble rotation ----
-  let lineIdx = 0, bubbleTimer = null;
+  let lineIdx = 0, bubbleTimer = null, currentLine = 0;
 
   function showLine(i) {
+    currentLine = i;
     const line = LINES[i];
-    bubble.innerHTML = line.t + (line.cta ? ` <span class="lb-bubble-cta" id="lbCta">好啊 →</span>` : "");
+    bubble.innerHTML = t(line.k) + (line.cta ? ` <span class="lb-bubble-cta" id="lbCta">${t("buddy.cta")}</span>` : "");
     bubble.classList.add("show");
     if (line.cta) document.getElementById("lbCta").addEventListener("click", line.cta);
     clearTimeout(bubbleTimer);
@@ -77,7 +115,6 @@
   setTimeout(nextLine, 1200);
   setInterval(nextLine, 13000);
 
-  // scroll trigger — 到 projects 區塊時講對應的話
   const projects = document.getElementById("projects");
   if (projects) {
     const io = new IntersectionObserver((entries) => {
@@ -90,6 +127,12 @@
     }, { threshold: 0.3 });
     io.observe(projects);
   }
+
+  // 語言切換時，即時更新
+  document.addEventListener("langchange", () => {
+    applyStaticText();
+    if (bubble.classList.contains("show")) showLine(currentLine);
+  });
 
   // ---- dismiss ----
   document.getElementById("lbClose").addEventListener("click", () => {
@@ -104,9 +147,7 @@
   function openChat() {
     chat.classList.add("open");
     bubble.classList.remove("show");
-    if (!log.children.length) {
-      addMsg("bot", "嗨！我是 Lucy 的 AI 分身，可以幫你介紹她的背景。想知道什麼都可以問 😊");
-    }
+    if (!log.children.length) addMsg("bot", t("buddy.greet"));
     input.focus();
   }
   function closeChat() { chat.classList.remove("open"); }
@@ -133,7 +174,7 @@
     addMsg("me", text);
     history.push({ role: "user", text });
 
-    const typing = addMsg("bot", "小郁思考中…");
+    const typing = addMsg("bot", t("buddy.thinking"));
     typing.classList.add("typing");
 
     try {
@@ -148,11 +189,11 @@
         addMsg("bot", data.reply);
         history.push({ role: "model", text: data.reply });
       } else {
-        addMsg("bot", data.detail || "剛剛連線出了點問題，再試一次看看 🙏");
+        addMsg("bot", data.detail || t("buddy.err"));
       }
     } catch (e) {
       typing.remove();
-      addMsg("bot", "連不上伺服器，等一下再問我 🙏");
+      addMsg("bot", t("buddy.offline"));
     } finally {
       busy = false;
       sendBtn.disabled = false;
@@ -165,4 +206,6 @@
   suggest.querySelectorAll("button").forEach(b =>
     b.addEventListener("click", () => send(b.dataset.q))
   );
+
+  applyStaticText();
 })();

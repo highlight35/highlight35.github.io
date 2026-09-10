@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/lucy-buddy.css">
@@ -24,13 +24,13 @@
             font-size: 1.05rem;
         }
 
-        .lang-toggle {
+        .pdf-lang-toggle {
             display: flex;
             justify-content: center;
             gap: 8px;
             margin-bottom: 40px;
         }
-        .lang-toggle button {
+        .pdf-lang-toggle button {
             font-family: var(--font);
             font-size: 0.95rem;
             font-weight: 600;
@@ -42,8 +42,8 @@
             cursor: pointer;
             transition: all .15s;
         }
-        .lang-toggle button:hover { border-color: var(--blue); color: var(--text); }
-        .lang-toggle button.active {
+        .pdf-lang-toggle button:hover { border-color: var(--blue); color: var(--text); }
+        .pdf-lang-toggle button.active {
             background: var(--blue);
             border-color: var(--blue);
             color: #fff;
@@ -110,22 +110,23 @@
                 <span></span><span></span><span></span>
             </button>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html#experience">Experience</a></li>
-                <li><a href="index.html#education">Education</a></li>
-                <li><a href="index.html#in-practice">In Practice</a></li>
-                <li><a href="index.html#projects">Side Projects</a></li>
-                <li><a href="index.html#life">Interests</a></li>
-                <li><a href="mailto:loveshow10122@gmail.com" class="nav-cta">Contact</a></li>
+                <li><a href="index.html#experience" data-i18n="nav.experience">Experience</a></li>
+                <li><a href="index.html#education" data-i18n="nav.education">Education</a></li>
+                <li><a href="index.html#in-practice" data-i18n="nav.practice">In Practice</a></li>
+                <li><a href="index.html#projects" data-i18n="nav.projects">Side Projects</a></li>
+                <li><a href="index.html#life" data-i18n="nav.interests">Interests</a></li>
+                <li><a href="mailto:loveshow10122@gmail.com" class="nav-cta" data-i18n="resume.contact">Contact</a></li>
+                <li><button id="langToggle" class="lang-toggle" aria-label="切換語言 / Switch language">中</button></li>
             </ul>
         </div>
     </nav>
 
     <section id="resume" class="section">
         <div class="container">
-            <h2 class="section-title">Resume</h2>
-            <p class="resume-lead">Chinese and English versions, kept in sync. Preview below, or download the PDF to keep.</p>
+            <h2 class="section-title" data-i18n="resume.title">Resume</h2>
+            <p class="resume-lead" data-i18n="resume.lead">Chinese and English versions, kept in sync. Preview below, or download the PDF to keep.</p>
 
-            <div class="lang-toggle" role="tablist">
+            <div class="pdf-lang-toggle" role="tablist">
                 <button data-lang="en" class="active">English</button>
                 <button data-lang="zh">中文</button>
             </div>
@@ -134,11 +135,11 @@
                 <div class="resume-card">
                     <div class="resume-card-head">
                         <div>
-                            <h3>Lucy Kao — Resume (English)</h3>
-                            <p>Senior AI / Software Engineer</p>
+                            <h3 data-i18n="resume.card.en.h">Lucy Kao — Resume (English)</h3>
+                            <p data-i18n="resume.card.en.sub">Senior AI / Software Engineer</p>
                         </div>
                         <a href="assets/resume/lucy-kao-resume-en.pdf" class="btn-primary" download>
-                            <i class="fas fa-download"></i> Download PDF
+                            <i class="fas fa-download"></i> <span data-i18n="resume.download">Download PDF</span>
                         </a>
                     </div>
                     <div class="resume-embed-wrap">
@@ -146,7 +147,7 @@
                     </div>
                     <div class="resume-mobile-note">
                         <i class="fas fa-file-pdf" style="font-size: 2rem; color: var(--blue); margin-bottom: 12px; display: block;"></i>
-                        Preview isn't available on small screens.<br>Use the download button above to view the PDF.
+                        <span data-i18n="resume.mobile">Preview isn't available on small screens. Use the download button above to view the PDF.</span>
                     </div>
                 </div>
             </div>
@@ -155,11 +156,11 @@
                 <div class="resume-card">
                     <div class="resume-card-head">
                         <div>
-                            <h3>高明郁（Lucy）— 履歷</h3>
-                            <p>資深 AI／軟體工程師</p>
+                            <h3 data-i18n="resume.card.zh.h">高明郁（Lucy）— 履歷</h3>
+                            <p data-i18n="resume.card.zh.sub">資深 AI／軟體工程師</p>
                         </div>
                         <a href="assets/resume/lucy-kao-resume-zh.pdf" class="btn-primary" download>
-                            <i class="fas fa-download"></i> 下載 PDF
+                            <i class="fas fa-download"></i> <span data-i18n="resume.download">Download PDF</span>
                         </a>
                     </div>
                     <div class="resume-embed-wrap">
@@ -167,7 +168,7 @@
                     </div>
                     <div class="resume-mobile-note">
                         <i class="fas fa-file-pdf" style="font-size: 2rem; color: var(--blue); margin-bottom: 12px; display: block;"></i>
-                        小螢幕無法預覽，請點上方按鈕下載 PDF 查看。
+                        <span data-i18n="resume.mobile">小螢幕無法預覽，請點上方按鈕下載 PDF 查看。</span>
                     </div>
                 </div>
             </div>
@@ -192,19 +193,22 @@
         </div>
     </footer>
 
+    <script src="js/i18n.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/lucy-buddy.js"></script>
     <script>
-        const langButtons = document.querySelectorAll('.lang-toggle button');
-        const panels = document.querySelectorAll('.resume-panel');
-        langButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                langButtons.forEach(b => b.classList.remove('active'));
-                panels.forEach(p => p.classList.remove('active'));
-                btn.classList.add('active');
-                document.getElementById('panel-' + btn.dataset.lang).classList.add('active');
-            });
-        });
+        (function () {
+            const btns = document.querySelectorAll('.pdf-lang-toggle button');
+            const panels = document.querySelectorAll('.resume-panel');
+            function setPdf(lang) {
+                btns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+                panels.forEach(p => p.classList.toggle('active', p.id === 'panel-' + lang));
+            }
+            btns.forEach(btn => btn.addEventListener('click', () => setPdf(btn.dataset.lang)));
+            // 跟網站語言同步
+            if (window.i18n) setPdf(window.i18n.lang);
+            document.addEventListener('langchange', (e) => setPdf(e.detail.lang));
+        })();
     </script>
 </body>
 </html>

@@ -175,6 +175,27 @@ body {
     border-color: var(--blue-border-strong);
 }
 
+.lang-toggle {
+    font-family: var(--font);
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--bg-alt);
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    width: 34px;
+    height: 30px;
+    cursor: pointer;
+    transition: color .18s, background .18s, border-color .18s;
+    margin-left: 6px;
+}
+.lang-toggle:hover { color: var(--blue); border-color: var(--blue-border); background: var(--blue-light); }
+.lang-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+html[lang="zh-Hant"] body {
+    font-family: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
