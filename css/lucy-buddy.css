@@ -60,11 +60,25 @@
 .lb-avatar:hover { transform: scale(1.07); }
 .lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 12px; }
 
-.lb-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.lb-avatar img {
+    width: 100%; height: 100%; object-fit: contain; display: block;
+    transform-origin: 50% 90%;
+    animation: lb-idle 6s ease-in-out infinite;
+}
 
 @keyframes lb-bob {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-4px); }
+}
+
+/* 呼吸 + 偶爾歪頭，純 CSS 不吃資源 */
+@keyframes lb-idle {
+    0%, 100%   { transform: scale(1) rotate(0deg); }
+    25%        { transform: scale(1.015) rotate(0deg); }
+    50%        { transform: scale(1) rotate(0deg); }
+    62%        { transform: scale(1.01) rotate(-3deg); }
+    70%        { transform: scale(1.01) rotate(-3deg); }
+    82%        { transform: scale(1) rotate(0deg); }
 }
 
 .lb-close {
@@ -188,7 +202,7 @@
 .lb-input-row button:disabled { opacity: .5; cursor: default; }
 
 @media (prefers-reduced-motion: reduce) {
-    .lb-avatar { animation: none; }
+    .lb-avatar, .lb-avatar img { animation: none; }
 }
 
 @media (max-width: 600px) {
