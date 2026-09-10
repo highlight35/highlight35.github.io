@@ -5,36 +5,8 @@
 
   try { if (sessionStorage.getItem(DISMISS_KEY) === "1") return; } catch (e) {}
 
-  const AVATAR_SVG = `
-    <svg viewBox="0 0 100 100" aria-hidden="true">
-      <ellipse cx="50" cy="96" rx="24" ry="4.5" fill="rgba(0,0,0,.10)"/>
-      <!-- 頭髮後層 (順著肩膀垂下) -->
-      <path d="M24 44 C24 18 76 18 76 44 C76 60 74 76 71 90 L64 90 C67 74 68 58 68 46 C68 28 32 28 32 46 C32 58 33 74 36 90 L29 90 C26 76 24 60 24 44 Z" fill="#2b2b33"/>
-      <!-- 脖子 -->
-      <rect x="45" y="62" width="10" height="10" rx="3" fill="#f6d9c2"/>
-      <!-- 身體 -->
-      <path d="M33 80 C33 69 67 69 67 80 L70 97 L30 97 Z" fill="#3b82f6"/>
-      <!-- 手臂 (揮手) -->
-      <g class="lb-arm"><path d="M63 78 q13 -5 13 -19" stroke="#f6d9c2" stroke-width="6.5" fill="none" stroke-linecap="round"/></g>
-      <path d="M37 78 q-9 -3 -10 -12" stroke="#f6d9c2" stroke-width="6.5" fill="none" stroke-linecap="round"/>
-      <!-- 臉 -->
-      <ellipse cx="50" cy="46" rx="19" ry="20" fill="#fbe3cf"/>
-      <!-- 瀏海 -->
-      <path d="M31 40 C33 25 67 25 69 40 C64 32 57 30 50 30 C43 30 36 32 31 40 Z" fill="#2b2b33"/>
-      <!-- 眼鏡 -->
-      <circle cx="42.5" cy="46" r="7" fill="#fff" stroke="#33343a" stroke-width="2"/>
-      <circle cx="57.5" cy="46" r="7" fill="#fff" stroke="#33343a" stroke-width="2"/>
-      <line x1="49.5" y1="45" x2="50.5" y2="45" stroke="#33343a" stroke-width="2"/>
-      <!-- 眼睛 -->
-      <circle class="lb-eye" cx="42.5" cy="46" r="2.5" fill="#2b2b33"/>
-      <circle class="lb-eye" cx="57.5" cy="46" r="2.5" fill="#2b2b33"/>
-      <!-- 腮紅 + 嘴 -->
-      <circle cx="36" cy="52" r="2.4" fill="#f7b3a4" opacity=".65"/>
-      <circle cx="64" cy="52" r="2.4" fill="#f7b3a4" opacity=".65"/>
-      <path d="M46.5 54 q3.5 3.5 7 0" stroke="#c96b5b" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    </svg>`;
-
-  const MINI_SVG = AVATAR_SVG;
+  const AVATAR_IMG = `<img src="assets/img/lucy-avatar.png" alt="Lucy" draggable="false">`;
+  const MINI_SVG = AVATAR_IMG;
 
   const LINES = [
     { t: "嗨，我是 Lucy 👋 歡迎來我的作品集！", cta: null },
@@ -49,7 +21,7 @@
   root.id = "lucy-buddy";
   root.innerHTML = `
     <div class="lb-bubble" id="lbBubble"></div>
-    <button class="lb-avatar" id="lbAvatar" aria-label="跟 Lucy 聊聊">${AVATAR_SVG}</button>
+    <button class="lb-avatar" id="lbAvatar" aria-label="跟 Lucy 聊聊">${AVATAR_IMG}</button>
     <button class="lb-close" id="lbClose" aria-label="關閉">✕</button>`;
   document.body.appendChild(root);
 

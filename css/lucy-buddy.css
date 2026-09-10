@@ -44,40 +44,29 @@
 }
 .lb-bubble .lb-bubble-cta:hover { text-decoration: underline; }
 
-/* 角色本體 */
+/* 角色本體 — 圓形照片頭像 */
 .lb-avatar {
-    width: 76px;
-    height: 76px;
-    border: none;
-    background: none;
+    width: 72px;
+    height: 72px;
+    border: 3px solid var(--bg);
+    background: var(--bg);
     padding: 0;
     cursor: pointer;
     position: relative;
-    transition: transform .2s;
-    animation: lb-bob 3.4s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
+    transition: transform .2s, box-shadow .2s;
+    animation: lb-bob 3.6s ease-in-out infinite;
+    overflow: hidden;
 }
-.lb-avatar:hover { transform: scale(1.06); }
-.lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 50%; }
+.lb-avatar:hover { transform: scale(1.07); box-shadow: var(--shadow-lg), 0 0 0 2px var(--blue); }
+.lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 
-.lb-avatar svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.lb-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 @keyframes lb-bob {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
-}
-
-.lb-eye { animation: lb-blink 5s infinite; transform-origin: center; }
-@keyframes lb-blink {
-    0%, 92%, 100% { transform: scaleY(1); }
-    95% { transform: scaleY(.1); }
-}
-
-.lb-arm { transform-origin: 62px 74px; animation: lb-wave 3.4s ease-in-out infinite; }
-@keyframes lb-wave {
-    0%, 60%, 100% { transform: rotate(0deg); }
-    70% { transform: rotate(-22deg); }
-    80% { transform: rotate(-8deg); }
-    90% { transform: rotate(-22deg); }
 }
 
 .lb-close {
@@ -124,7 +113,8 @@
     border-bottom: 1px solid var(--border);
     background: var(--bg-alt);
 }
-.lb-chat-head .lb-mini { width: 34px; height: 34px; flex-shrink: 0; }
+.lb-chat-head .lb-mini { width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%; overflow: hidden; }
+.lb-chat-head .lb-mini img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .lb-chat-head .lb-title { font-weight: 700; font-size: .95rem; }
 .lb-chat-head .lb-sub { font-size: .72rem; color: var(--text-muted); }
 .lb-chat-head .lb-x {
@@ -200,7 +190,7 @@
 .lb-input-row button:disabled { opacity: .5; cursor: default; }
 
 @media (prefers-reduced-motion: reduce) {
-    .lb-avatar, .lb-eye, .lb-arm { animation: none; }
+    .lb-avatar { animation: none; }
 }
 
 @media (max-width: 600px) {
