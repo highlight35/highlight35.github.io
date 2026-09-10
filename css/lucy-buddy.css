@@ -1,0 +1,210 @@
+/* ===========================
+   Lucy Buddy — 官網 Q 版導覽角色
+   =========================== */
+#lucy-buddy {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    font-family: var(--font);
+}
+
+#lucy-buddy.hidden { display: none; }
+
+/* 對話泡泡 */
+.lb-bubble {
+    position: relative;
+    max-width: 230px;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 16px 16px 4px 16px;
+    padding: 11px 14px;
+    font-size: .85rem;
+    line-height: 1.55;
+    box-shadow: var(--shadow-md);
+    opacity: 0;
+    transform: translateY(6px) scale(.96);
+    transition: opacity .25s, transform .25s;
+    pointer-events: none;
+}
+.lb-bubble.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+.lb-bubble .lb-bubble-cta {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--blue);
+    cursor: pointer;
+}
+.lb-bubble .lb-bubble-cta:hover { text-decoration: underline; }
+
+/* 角色本體 */
+.lb-avatar {
+    width: 76px;
+    height: 76px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    transition: transform .2s;
+    animation: lb-bob 3.4s ease-in-out infinite;
+}
+.lb-avatar:hover { transform: scale(1.06); }
+.lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 50%; }
+
+.lb-avatar svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+@keyframes lb-bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.lb-eye { animation: lb-blink 5s infinite; transform-origin: center; }
+@keyframes lb-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(.1); }
+}
+
+.lb-arm { transform-origin: 62px 74px; animation: lb-wave 3.4s ease-in-out infinite; }
+@keyframes lb-wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    70% { transform: rotate(-22deg); }
+    80% { transform: rotate(-8deg); }
+    90% { transform: rotate(-22deg); }
+}
+
+.lb-close {
+    position: absolute;
+    top: -6px; left: -6px;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+#lucy-buddy:hover .lb-close { display: flex; }
+
+/* 聊天視窗 */
+.lb-chat {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 950;
+    width: min(360px, calc(100vw - 32px));
+    height: min(520px, calc(100vh - 100px));
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.lb-chat.open { display: flex; }
+
+.lb-chat-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-alt);
+}
+.lb-chat-head .lb-mini { width: 34px; height: 34px; flex-shrink: 0; }
+.lb-chat-head .lb-title { font-weight: 700; font-size: .95rem; }
+.lb-chat-head .lb-sub { font-size: .72rem; color: var(--text-muted); }
+.lb-chat-head .lb-x {
+    margin-left: auto;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.1rem; color: var(--text-muted); line-height: 1;
+    padding: 4px 8px;
+}
+.lb-chat-head .lb-x:hover { color: var(--text); }
+
+.lb-log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.lb-msg {
+    max-width: 82%;
+    padding: 9px 13px;
+    border-radius: 14px;
+    font-size: .86rem;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+.lb-msg.bot { align-self: flex-start; background: var(--bg-alt); border: 1px solid var(--border); border-bottom-left-radius: 4px; }
+.lb-msg.me { align-self: flex-end; background: var(--blue); color: #fff; border-bottom-right-radius: 4px; }
+.lb-msg.typing { color: var(--text-muted); font-style: italic; }
+
+.lb-suggest { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px 10px; }
+.lb-suggest button {
+    font-family: var(--font);
+    font-size: .78rem;
+    color: var(--blue);
+    background: var(--blue-light);
+    border: 1px solid var(--blue-border);
+    border-radius: 999px;
+    padding: 5px 11px;
+    cursor: pointer;
+}
+.lb-suggest button:hover { background: var(--blue-light-hover); }
+
+.lb-input-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px 14px;
+    border-top: 1px solid var(--border);
+}
+.lb-input-row input {
+    flex: 1;
+    font-family: var(--font);
+    font-size: .88rem;
+    padding: 9px 12px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+}
+.lb-input-row input:focus { outline: 2px solid var(--blue); outline-offset: 0; }
+.lb-input-row button {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font);
+    font-size: .86rem;
+}
+.lb-input-row button:disabled { opacity: .5; cursor: default; }
+
+@media (prefers-reduced-motion: reduce) {
+    .lb-avatar, .lb-eye, .lb-arm { animation: none; }
+}
+
+@media (max-width: 600px) {
+    #lucy-buddy { right: 14px; bottom: 14px; }
+    .lb-bubble { max-width: 190px; }
+    .lb-chat { right: 8px; bottom: 8px; }
+}
