@@ -44,29 +44,27 @@
 }
 .lb-bubble .lb-bubble-cta:hover { text-decoration: underline; }
 
-/* 角色本體 — 圓形照片頭像 */
+/* 角色本體 — Q 版貼圖 */
 .lb-avatar {
-    width: 72px;
-    height: 72px;
-    border: 3px solid var(--bg);
-    background: var(--bg);
+    width: 84px;
+    height: 84px;
+    border: none;
+    background: none;
     padding: 0;
     cursor: pointer;
     position: relative;
-    border-radius: 50%;
-    box-shadow: var(--shadow-lg), 0 0 0 1px var(--border);
-    transition: transform .2s, box-shadow .2s;
+    transition: transform .2s;
     animation: lb-bob 3.6s ease-in-out infinite;
-    overflow: hidden;
+    filter: drop-shadow(0 6px 10px rgba(27, 35, 51, .16));
 }
-.lb-avatar:hover { transform: scale(1.07); box-shadow: var(--shadow-lg), 0 0 0 2px var(--blue); }
-.lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.lb-avatar:hover { transform: scale(1.07); }
+.lb-avatar:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 12px; }
 
-.lb-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.lb-avatar img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 @keyframes lb-bob {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
+    50% { transform: translateY(-4px); }
 }
 
 .lb-close {
